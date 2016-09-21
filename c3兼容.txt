@@ -1,0 +1,125 @@
+css3的兼容性
+1 优雅降级
+先完成页面所有的功能 然后再测试和修复的是很好进行调整
+
+
+2 渐进增强
+区分浏览器一般使用css中语句 
+1. <!–[if !IE]><!–> 除IE外都可识别 <!–<![endif]–> 
+2. <!–[if IE]> 所有的IE可识别 <![endif]–> 
+3. <!–[if IE 5.0]> 只有IE5.0可以识别 <![endif]–> 
+4. <!–[if IE 5]> 仅IE5.0与IE5.5可以识别 <![endif]–> 
+5. <!–[if gt IE 5.0]> IE5.0以及IE5.0以上版本都可以识别 <![endif]–> 
+6. <!–[if IE 6]> 仅IE6可识别 <![endif]–> 
+7. <!–[if lt IE 6]> IE6以及IE6以下版本可识别 <![endif]–> 
+8. <!–[if gte IE 6]> IE6以及IE6以上版本可识别 <![endif]–> 
+9. <!–[if IE 7]> 仅IE7可识别 <![endif]–> 
+10. <!–[if lt IE 7]> IE7以及IE7以下版本可识别 <![endif]–> 
+11. <!–[if gte IE 7]> IE7以及IE7以上版本可识别 <![endif]–>  
+
+或者使用hack进行调节
+http://www.kwstu.com/Admin/ViewArticle/201409011604277330
+
+
+选择器
+关系选择器
+.aa + div{ 弟弟选择器 .aa的下一个弟弟div
+  
+}
+.aa ~ div{弟弟选择器 .aa的所有的弟弟div
+
+}
+css3选择器
+:nt-child()
+ul :nt-child(2){  ul下面的第二个孩子
+
+}
+ul :nth-child(2n){ ul下面的偶数孩子
+
+}
+ul :nth-child(2n+1){  ul下面的奇数的孩子
+
+}
+
+:nth-of-type 是限定元素类型的子元素
+
+ul :nth-of-type(2){  ul下面的第二个子元素  会找到p的第二个  和li的第二个
+	<p></p>
+	<p></p>
+	<li></li>
+	<li></li>
+}
+
+ul li:nth-of-type(2){  ul下面的第二个子元素 li的第二个
+	<p></p>
+	<p></p>
+	<li></li>
+	<li></li>
+}
+
+
+ul li:nth-child(2){  会先找ul下的第二个子元素  并且第二个是li才执行下面的css语句
+
+}
+
+
+first-child
+first-of-type
+last-child
+last-of-type
+only-child   要求只有一个孩子
+only-of-type   要求孩子中存在一种类型的元素只有一个  即可被选中
+
+
+
+空选择器
+empty
+div:empty{  div下面任何东西都没有 才被选中
+
+}
+
+
+
+否定选择器
+:not()
+ul li:not(.a1){  ul 下面的所有li 除了类名是a1的都存在圆角
+ border-radiys:50%;
+}
+
+
+属性选择器
+
+input[type=button]{
+
+}
+
+ul li[class|='zf']{class只有一个值并且是是zf或者只有一个值并且是zf-开头的
+   
+}
+ul li[type*='zf']{ li中的类名 只要有包含zf字符串就可以
+}
+
+
+动态的目标选择器 hover  active visited link
+target  当我点击a标签的时候那么我们设置的样式就生效  也会默认去寻找对应的id 是我们具有对应id的标签的样式被添加或者被改变 就会默认的在URL地址栏添加一个锚点定位 并且你点击多少个 锚点定位只会存在一个
+#div1{
+	display:none
+}
+#div1:target{
+	display:block;
+}
+<a href="#div1"/>  
+<div id="div1"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
